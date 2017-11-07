@@ -1,7 +1,7 @@
 #!/bin/bash 
 
-Vol=$(amixer -c 0 get Master | grep "Mono:" | awk '{print $4}' | tr -d "[ %]")
-Mute=$(amixer -c 0 get Master | grep "Mono:" | awk '{print $6}' | tr -d "[-]")
+Vol=$(amixer -D pulse -c 0 get Master | grep "Mono:" | awk '{print $4}' | tr -d "[ %]")
+Mute=$(amixer -D pulse -c 0 get Master | grep "Mono:" | awk '{print $6}' | tr -d "[-]")
 
 if [ "$Mute" = "off" ];then 
     echo -e " Mute"
