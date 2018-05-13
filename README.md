@@ -1,5 +1,7 @@
 # i3Blocks Gate 
 
+*Fored by @hringriin*
+
 my i3blocks Scripts For Arch Linux  And Ubuntu more simple and more useful 
 
 | i3blocks Script | Arch Depen        | Ubuntu Depen     | ScreenShot |
