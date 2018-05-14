@@ -1,5 +1,26 @@
 #!/bin/bash 
 
+
+
+# author: @hringriin
+# not elegant, but it works
+mocp -S
+
+if [[ $1 == "1" ]] ; then
+    echo "prev"
+    mocp -r
+fi
+
+if [[ $1 == "2" ]] ; then
+    echo "toggle"
+    mocp -G
+fi
+
+if [[ $1 == "3" ]] ; then
+    echo "next"
+    mocp -f
+fi
+
 Title=$(mocp -i | grep "^Title:" | cut -d ":" -f2)
 NUM_Title=$(echo -e "$Title" | wc -c )
 S_Title=$(echo -e "$Title" | head -c 30)
