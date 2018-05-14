@@ -1,34 +1,47 @@
-#!/bin/bash 
+#!/bin/bash
+# author: @hringriin
 
-Bat=$(acpi | cut -d " " -f4 | tr -d "%,")
-Adapt=$(acpi -a | cut -d " " -f3)
+# author: @hringriin
+function getBat ()
+{
+    #echo $(acpi | grep "Battery $1" | cut -d " " -f 4 | tr -d "%,")
+    design=$(cat /sys/class/power_supply/BAT$1/uevent | grep "POWER_SUPPLY_ENERGY_FULL_DESIGN=" | cut -d "=" -f 2)
+    current=$(cat /sys/class/power_supply/BAT$1/uevent | grep "POWER_SUPPLY_ENERGY_FULL=" | cut -d "=" -f 2)
+    capacity=$(cat /sys/class/power_supply/BAT$1/uevent | grep "POWER_SUPPLY_CAPACITY=" | cut -d "=" -f 2)
 
-if [ "$Adapt" = "on-line" ];then
-	icon0=""
-    icon1=""
-    icon2=""
-    icon3=""
-    icon4=""
-else
-    icon0=""
-    icon1=""
-    icon2=""
-    icon3=""
-    icon4=""
+    echo $( printf "%.2f" $(echo "scale=10;(${current}/${design})*${capacity}" | bc))
+}
+
+# author: @hringriin
+function getAdapter ()
+{
+    echo $(acpi -a | cut -d " " -f 3)
+}
+
+# author: @hringriin
+function getIcon ()
+{
+    batval=$(printf "%.0f" $2)
+
+    if [[ $1 == "on-line" ]] ; then
+        echo " "
+    else
+        if [[ ${batval} -lt 20 ]] ; then
+            echo "  "
+        elif [[ ${batval} -lt 40 ]] ; then
+            echo "  "
+        elif [[ ${batval} -lt 60 ]] ; then
+            echo "  "
+        elif [[ ${batval} -lt 80 ]] ; then
+            echo "  "
+        elif [[ ${batval} -gt 100 ]] ; then
+            echo "  "
+        fi
+    fi
+}
+
+if [[ $# -lt 1 || $1 -gt 1 ]] ; then
+    exit 0
 fi
 
-if [ -z "$Bat" ];then 
-    bat="$icon4 $Adapt"
-elif [ "$Bat" -gt "100" ];then 
-     bat="$icon4 Full"
-elif [ "$Bat" -gt "90" ];then 
-     bat="$icon3 $Bat %"
-elif [ "$Bat" -gt "60" ];then 
-     bat="$icon2 $Bat %"
-elif [ "$Bat" -gt "30" ];then 
-     bat="$icon1 $Bat %"
-elif [ "$Bat" -lt "30" ];then
-    bat="$icon0 $Bat %"
-fi 
-
-echo -e "$bat"
+echo "$(getIcon $(getAdapter) $(getBat $1)) $(getBat $1)%"
