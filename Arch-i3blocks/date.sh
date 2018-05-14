@@ -1,3 +1,3 @@
 #!/bin/bash 
 
-echo -e " $(date +%D\ %R) "
+echo -e " $(date '+%Y-%m-%d %H:%M:%S') "
