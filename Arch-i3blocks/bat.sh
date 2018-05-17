@@ -34,7 +34,7 @@ function getIcon ()
             echo "  "
         elif [[ ${batval} -lt 80 ]] ; then
             echo "  "
-        elif [[ ${batval} -gt 100 ]] ; then
+        elif [[ ${batval} -gt 80 ]] ; then
             echo "  "
         fi
     fi
