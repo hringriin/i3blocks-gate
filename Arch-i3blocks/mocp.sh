@@ -4,7 +4,7 @@
 
 # author: @hringriin
 # not elegant, but it works
-mocp -S
+#mocp -S
 
 if [[ $1 == "1" ]] ; then
     echo "prev"
@@ -21,17 +21,14 @@ if [[ $1 == "3" ]] ; then
     mocp -f
 fi
 
-Title=$(mocp -i | grep "^Title:" | cut -d ":" -f2)
-NUM_Title=$(echo -e "$Title" | wc -c )
-S_Title=$(echo -e "$Title" | head -c 30)
+Title=$(mocp -i | grep "^Title:" | cut -d ":" -f2 | sed -e 's/^ //g')
+S_Title=$(echo -e "$Title" | head -c 40)
 Status=$(mocp -i | grep "^State:" | cut -d ":" -f2)
 
-if [ "$Status" != " PLAY" ];then 
-        echo -e " : Pause"
+if [ "$Status" == "STOP" ] ; then
+    echo -e " : STOP"
+elif [ "$Status" != " PLAY" ];then 
+    echo -e " : Pause"
 else
-    if [ "$NUM_Title" -lt 30 ];then 
-        echo -e " : $Title "
-    else
-        echo -e " : $S_Title ... "
-    fi 
+    echo -e " : $S_Title ... "
 fi
