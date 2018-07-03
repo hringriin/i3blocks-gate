@@ -1,4 +1,4 @@
-#!/bin/bash 
+#!/bin/bash
 
 
 
@@ -27,7 +27,7 @@ Status=$(mocp -i | grep "^State:" | cut -d ":" -f2)
 
 if [ "$Status" == "STOP" ] ; then
     echo -e " : STOP"
-elif [ "$Status" != " PLAY" ];then 
+elif [ "$Status" != " PLAY" ];then
     echo -e " : Pause"
 else
     echo -e " : $S_Title ... "

@@ -11,22 +11,22 @@ fi
 
 function getUsed ()
 {
-    echo `df -h $1 | tail -n 1 | sed -e 's/  */|/g' | cut -d "|" -f 3`
+    echo $(df -h $1 | tail -n 1 | sed -e 's/  */|/g' | cut -d "|" -f 3)
 }
 
 function getFree ()
 {
-    echo `df -h $1 | tail -n 1 | sed -e 's/  */|/g' | cut -d "|" -f 4`
+    echo $(df -h $1 | tail -n 1 | sed -e 's/  */|/g' | cut -d "|" -f 4)
 }
 
 function getAvail ()
 {
-    echo `df -h $1 | tail -n 1 | sed -e 's/  */|/g' | cut -d "|" -f 2`
+    echo $(df -h $1 | tail -n 1 | sed -e 's/  */|/g' | cut -d "|" -f 2)
 }
 
 function getPercUsed ()
 {
-    echo `df -h $1 | tail -n 1 | sed -e 's/  */|/g' | cut -d "|" -f 5 | sed -e 's/\%//g'`
+    echo $(df -h $1 | tail -n 1 | sed -e 's/  */|/g' | cut -d "|" -f 5 | sed -e 's/\%//g')
 }
 
 while getopts "fhru" opt; do
@@ -37,13 +37,13 @@ while getopts "fhru" opt; do
                 exit 127
             fi
 
-            if [[ `getPercUsed $2` -gt 75 ]] ; then
+            if [[ $(getPercUsed $2) -gt 75 ]] ; then
                 diskColor='<span color="yellow"><b>'
-            elif [[ `getPercUsed $2` -gt 90 ]] ; then
+            elif [[ $(getPercUsed $2) -gt 90 ]] ; then
                 diskColor='</b><span color="red">'
             fi
 
-            echo -e "${diskColor}`getUsed $2`${endColor} <span color='cyan'><b>/</b></span> `getAvail $2` (${diskColor}`getPercUsed $2`%${endColor})"
+            echo -e "${diskColor}$(getUsed $2)${endColor} <span color='cyan'><b>/</b></span> $(getAvail $2) (${diskColor}$(getPercUsed $2)%${endColor})"
             ;;
         h)
             # displays all flags (help)
@@ -75,13 +75,13 @@ while getopts "fhru" opt; do
                 exit 127
             fi
 
-            if [[ `getPercUsed $2` -gt 75 ]] ; then
+            if [[ $(getPercUsed $2) -gt 75 ]] ; then
                 diskColor='<span color="yellow"><b>'
-            elif [[ `getPercUsed $2` -gt 90 ]] ; then
+            elif [[ $(getPercUsed $2) -gt 90 ]] ; then
                 diskColor='</b><span color="red">'
             fi
 
-            echo "${diskColor}`getFree $2`${endColor}"
+            echo "${diskColor}$(getFree $2)${endColor}"
             ;;
         u)
             if [[ $# -lt 2 || $# -gt 2 ]] ; then
@@ -89,13 +89,13 @@ while getopts "fhru" opt; do
                 exit 127
             fi
 
-            if [[ `getPercUsed $2` -gt 75 ]] ; then
+            if [[ $(getPercUsed $2) -gt 75 ]] ; then
                 diskColor='<span color="yellow"><b>'
-            elif [[ `getPercUsed $2` -gt 90 ]] ; then
+            elif [[ $(getPercUsed $2) -gt 90 ]] ; then
                 diskColor='</b><span color="red">'
             fi
 
-            echo -e "${diskColor}`getUsed $2`${endColor}"
+            echo -e "${diskColor}$(getUsed $2)${endColor}"
             ;;
         \?)
             #echo "Invalid option: -$OPTARG" >&2

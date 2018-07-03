@@ -1,11 +1,11 @@
 #!/bin/bash
 # tider
 
-raw=`cat ${HOME}/.config/tider/i3bar.txt`
-tstatus=`echo ${raw} | tr -d '"{}' | cut -d " " -f 2`
-tcolor=`echo ${raw} | tr -d '"{}' | cut -d "," -f 2 | cut -d " " -f 3`
-ttime=`echo ${raw} | tr -d '"{}' | cut -d "," -f 1 | sed -e 's/.*TIME //' | cut -d " " -f 1`
-tsubj=`echo ${raw} | tr -d '"{}' | cut -d "," -f 1 | sed -e 's/.*TIME //g' | sed -e 's/ /|/' | cut -d "|" -f 2`
+raw=$(cat ${HOME}/.config/tider/i3bar.txt)
+tstatus=$(echo ${raw} | tr -d '"{}' | cut -d " " -f 2)
+tcolor=$(echo ${raw} | tr -d '"{}' | cut -d "," -f 2 | cut -d " " -f 3)
+ttime=$(echo ${raw} | tr -d '"{}' | cut -d "," -f 1 | sed -e 's/.*TIME //' | cut -d " " -f 1)
+tsubj=$(echo ${raw} | tr -d '"{}' | cut -d "," -f 1 | sed -e 's/.*TIME //g' | sed -e 's/ /|/' | cut -d "|" -f 2)
 
 function test()
 {
