@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# just a test
+
 # Show Wifi Stuff
 W_inter=$(ip link | grep "[1-9]: wlp" | cut -d " " -f2 | tr -d ':')
 W_con=$(nmcli d | grep "$W_inter" | awk '{print $3}')
