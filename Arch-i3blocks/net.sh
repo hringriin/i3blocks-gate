@@ -65,7 +65,7 @@ Ethernet ()
     if [ "$E_con" = "connected" ] ; then
         echo -e "${diskColor}$E_name: $E_ip${endColor}"
     else
-        echo "nothing"    # to have the label displayed
+        echo " "    # to have the label displayed
     fi
 }
 
