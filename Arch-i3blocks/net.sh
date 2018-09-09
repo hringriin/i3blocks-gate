@@ -40,7 +40,8 @@ WWAN ()
     if [ "$L_con" = "connected" ];then
         echo -e "${diskColor}$L_name: $L_ip${endColor}"
     else
-        echo " "    # to have the label displayed
+        diskColor='<span color="yellow"><b>'
+        echo "${diskColor}${L_con}${endColor}"    # to have the label displayed
     fi
 }
 
@@ -53,9 +54,10 @@ Wifi ()
         elif [[ ${W_str} -lt 70 ]] ; then
             diskColor='<span color="yellow"><b>'
         fi
-        echo -e "${diskColor}$W_name: $W_ip ($W_str%)${endColor}"
+        echo -e "${diskColor}$W_name:${endColor} $W_ip ${diskColor}($W_str%)${endColor}"
     else
-        echo " "    # to have the label displayed
+        diskColor='<span color="yellow"><b>'
+        echo "${diskColor}${W_con}${endColor}"    # to have the label displayed
     fi
 }
 
@@ -65,7 +67,8 @@ Ethernet ()
     if [ "$E_con" = "connected" ] ; then
         echo -e "${diskColor}$E_name: $E_ip${endColor}"
     else
-        echo " "    # to have the label displayed
+        diskColor='<span color="yellow"><b>'
+        echo "${diskColor}${E_con}${endColor}"    # to have the label displayed
     fi
 }
 
