@@ -1,8 +1,8 @@
-#!/bin/bash 
+#!/bin/bash
 # disk - outputs the disc space of a (mounted) volume
-# author: hringriin 
+# author: hringriin
 
-diskColor='<span color="limegreen"><b>'
+diskColor="<span color=\"#8ec07c\"><b>"
 endColor='</b></span>'
 
 if [[ $# -lt 1 ]] ; then
@@ -38,9 +38,9 @@ while getopts "fhru" opt; do
             fi
 
             if [[ $(getPercUsed $2) -gt 75 ]] ; then
-                diskColor='<span color="yellow"><b>'
+                diskColor='<span color=\"fabd2f\"><b>'
             elif [[ $(getPercUsed $2) -gt 90 ]] ; then
-                diskColor='</b><span color="red">'
+                diskColor='</b><span color=\"#fb4934\">'
             fi
 
             echo -e "${diskColor}$(getUsed $2)${endColor} <span color='cyan'><b>/</b></span> $(getAvail $2) (${diskColor}$(getPercUsed $2)%${endColor})"
@@ -76,9 +76,9 @@ while getopts "fhru" opt; do
             fi
 
             if [[ $(getPercUsed $2) -gt 75 ]] ; then
-                diskColor='<span color="yellow"><b>'
+                diskColor='<span color=\"fabd2f\"><b>'
             elif [[ $(getPercUsed $2) -gt 90 ]] ; then
-                diskColor='</b><span color="red">'
+                diskColor='</b><span color=\"#fb4934\">'
             fi
 
             echo "${diskColor}$(getFree $2)${endColor}"
@@ -90,9 +90,9 @@ while getopts "fhru" opt; do
             fi
 
             if [[ $(getPercUsed $2) -gt 75 ]] ; then
-                diskColor='<span color="yellow"><b>'
+                diskColor='<span color=\"fabd2f\"><b>'
             elif [[ $(getPercUsed $2) -gt 90 ]] ; then
-                diskColor='</b><span color="red">'
+                diskColor='</b><span color=\"#fb4934\">'
             fi
 
             echo -e "${diskColor}$(getUsed $2)${endColor}"

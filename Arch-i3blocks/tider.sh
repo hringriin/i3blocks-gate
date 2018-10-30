@@ -7,6 +7,14 @@ tcolor=$(echo ${raw} | tr -d '"{}' | cut -d "," -f 2 | cut -d " " -f 3)
 ttime=$(echo ${raw} | tr -d '"{}' | cut -d "," -f 1 | sed -e 's/.*TIME //' | cut -d " " -f 1)
 tsubj=$(echo ${raw} | tr -d '"{}' | cut -d "," -f 1 | sed -e 's/.*TIME //g' | sed -e 's/ /|/' | cut -d "|" -f 2)
 
+if [[ ${tcolor} == "#00AA00" ]] ; then
+    tcolor=\#b8bb26
+elif [[ ${tcolor} == "#DD6600" ]] ; then
+    tcolor=\#fabd2f
+else
+    tcolor=\#ff00ff
+fi
+
 function test()
 {
     echo -e "RAW DATA:  ${raw}"

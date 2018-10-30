@@ -31,8 +31,8 @@ L_ip=$(ip -br addr | grep "${L_inter}" | awk '{print $3}')
 
 
 # author: @hringriin
-diskColor='<span color="limegreen"><b>'
-endColor='</b></span>'
+diskColor="<span color=\"#8ec07c\"><b>"
+endColor="</b></span>"
 
 # author: @hringriin
 WWAN ()
@@ -40,7 +40,7 @@ WWAN ()
     if [ "$L_con" = "connected" ];then
         echo -e "${diskColor}$L_name: $L_ip${endColor}"
     else
-        diskColor='<span color="yellow"><b>'
+        diskColor="<span color=\"#fabd2f\"><b>"
         echo "${diskColor}${L_con}${endColor}"    # to have the label displayed
     fi
 }
@@ -50,13 +50,13 @@ Wifi ()
 {
     if [ "$W_con" = "connected" ];then
         if [[ ${W_str} -lt 50 ]] ; then
-            diskColor='<span color="red"><b>'
+            diskColor="<span color=\"#fb4934\"><b>"
         elif [[ ${W_str} -lt 70 ]] ; then
-            diskColor='<span color="yellow"><b>'
+            diskColor="<span color=\"#fabd2f\"><b>"
         fi
         echo -e "${diskColor}$W_name:${endColor} $W_ip ${diskColor}($W_str%)${endColor}"
     else
-        diskColor='<span color="yellow"><b>'
+        diskColor="<span color=\"#fabd2f\"><b>"
         echo "${diskColor}${W_con}${endColor}"    # to have the label displayed
     fi
 }
@@ -67,7 +67,7 @@ Ethernet ()
     if [ "$E_con" = "connected" ] ; then
         echo -e "${diskColor}$E_name: $E_ip${endColor}"
     else
-        diskColor='<span color="yellow"><b>'
+        diskColor="<span color=\"#fabd2f\"><b>"
         echo "${diskColor}${E_con}${endColor}"    # to have the label displayed
     fi
 }
