@@ -14,7 +14,7 @@ elif [[ ${mails} -gt 0 ]] ; then
     color=\#fabd2f
     envel=
 else
-    color=\#b8bb26
+    color=\#8ec07c
     envel=
 fi
 

@@ -8,7 +8,7 @@ ttime=$(echo ${raw} | tr -d '"{}' | cut -d "," -f 1 | sed -e 's/.*TIME //' | cut
 tsubj=$(echo ${raw} | tr -d '"{}' | cut -d "," -f 1 | sed -e 's/.*TIME //g' | sed -e 's/ /|/' | cut -d "|" -f 2)
 
 if [[ ${tcolor} == "#00AA00" ]] ; then
-    tcolor=\#b8bb26
+    tcolor=\#8ec07c
 elif [[ ${tcolor} == "#DD6600" ]] ; then
     tcolor=\#fabd2f
 else
