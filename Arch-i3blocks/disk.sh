@@ -43,7 +43,7 @@ while getopts "fhru" opt; do
                 diskColor='</b><span color=\"#fb4934\">'
             fi
 
-            echo -e "${diskColor}$(getUsed $2)${endColor} <span color='cyan'><b>/</b></span> $(getAvail $2) (${diskColor}$(getPercUsed $2)%${endColor})"
+            echo -e "${diskColor}$(getUsed $2)${endColor} <span color=\"#d3869b\"><b>/</b></span> $(getAvail $2) (${diskColor}$(getPercUsed $2)%${endColor})"
             ;;
         h)
             # displays all flags (help)
