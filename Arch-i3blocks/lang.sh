@@ -6,7 +6,7 @@ layout=$(setxkbmap -query | grep -i layout | sed -e 's/  *//g' | cut -d ":" -f 2
 variant=$(setxkbmap -query | grep -i variant | sed -e 's/  *//g' | cut -d ":" -f 2)
 
 if [[ -z ${variant} ]] ; then
-    echo "  <span color=\"#8ec07c\">${layout}</span>"
+    echo "  <b><span color=\"#8ec07c\">${layout}</span></b>"
 else
-    echo "  <span color=\"#8ec07c\">${layout}_${variant}</span>"
+    echo "  <b><span color=\"#8ec07c\">${layout}_${variant}</span></b>"
 fi
