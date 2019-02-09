@@ -21,7 +21,7 @@ dname="Errör"
 
 if [[ ${devname} == *"pci-0000_00_1b.0"* ]] ; then
     dname="Internal"
-elif [[ ${devname} == "alsa_card.usb-Logitech_Logitech_G933_Gaming_Wireless_Headset-00" ]] ; then
+elif [[ ${devname} == *"Logitech_Logitech_G933_Gaming_Wireless_Headset"* ]] ; then
     dname="Logitech G933"
 else
     dname="Unknown"
