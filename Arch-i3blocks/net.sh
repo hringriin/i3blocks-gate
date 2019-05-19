@@ -24,9 +24,9 @@ E_ip=$(ip -br addr | grep "${E_inter}" | awk '{print $3}')
 
 # author: @hringriin
 # Show WWAN stuff
-L_inter=$(ip link| grep "[1-9]: wwp" | cut -d " " -f 2 | tr -d ':')        # this seems not to work with my system. the device is called ttyACM0 in nmcli but wwp... in iplink
-L_con=$(nmcli d | grep "ttyACM0" | awk '{print $3}')
-L_name=$(nmcli d | grep "ttyACM0" | awk '{print $4}')
+L_inter=$(ip link| grep "[1-9]: wwp" | cut -d " " -f 2 | tr -d ':')        # this seems not to work with my system. the device is called ttyACM1 in nmcli but wwp... in iplink
+L_con=$(nmcli d | grep "ttyACM" | awk '{print $3}')
+L_name=$(nmcli d | grep ttyACM | awk '{$1="" ; $2="" ; $3="" ; print $0;}' | sed -e 's/^[ \t]*//')
 L_ip=$(ip -br addr | grep "${L_inter}" | awk '{print $3}')
 
 
